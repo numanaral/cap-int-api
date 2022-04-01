@@ -15,8 +15,8 @@ app.use(express.json());
 app.get('/', (req, res) => res.json({ message: 'Halo 👋' }));
 
 app.use(middlewares.checkApiKey);
-app.use(middlewares.checkRequiredHeaders);
-app.use(middlewares.handleCors);
+// app.use(middlewares.checkRequiredHeaders);
+// app.use(middlewares.handleCors);
 app.use(middlewares.triggerRandomDelayOrError);
 
 app.use('/api', api);
