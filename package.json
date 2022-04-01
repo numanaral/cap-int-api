@@ -6,7 +6,8 @@
     "dev": "nodemon src/index.js",
     "lint": "eslint --ext .js .",
     "lint:fix": "npm run lint -- --fix",
-    "lint:f": "npm run lint:fix"
+    "lint:f": "npm run lint:fix",
+    "gen-db": "node src/internal/generate-db.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
