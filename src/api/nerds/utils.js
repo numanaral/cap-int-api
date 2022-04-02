@@ -50,13 +50,7 @@ const searchBooks = ({ keyword, ...rest }) => {
 			return {
 				...dataRest,
 				fullName: name,
-				languageCombination: languages
-					? languages
-							.map(({ language }) => {
-								return language;
-							})
-							.join('|')
-					: null,
+				languageCombination: languages?.join('|') || null,
 			};
 		});
 
