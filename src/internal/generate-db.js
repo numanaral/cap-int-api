@@ -18,10 +18,7 @@ const generateRandomNumbers = ({ maxSize = 7, maxValue = 19 } = {}) => {
 const generateRandomProgrammingLanguages = () => {
 	const randomNumbers = generateRandomNumbers();
 	return randomNumbers.map(randomNumber => {
-		return {
-			id: randomNumber + 1,
-			language: PROGRAMMING_LANGUAGES[randomNumber],
-		};
+		return PROGRAMMING_LANGUAGES[randomNumber];
 	});
 };
 

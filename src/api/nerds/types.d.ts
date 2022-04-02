@@ -16,21 +16,16 @@ interface PaginatedResponse<T> {
 	data: Array<T>;
 }
 
-interface PeepsListItemLanguage {
-  id: number;
-  language: string;
-}
-
 interface PeepsListItem {
-  id: number;
+	id: number;
 	name: string;
-	languages: Array<PeepsListItemLanguage> | null;
+	languages: Array<string> | null;
 }
 
 // We are doing this just so that the candidate has to normalize the different
 // endpoint responses using map.
 interface PeepsSearchData {
-  id
+	id;
 	fullName: string;
 	languageCombination: string | null;
 }
