@@ -8,6 +8,8 @@ const Flag = {
 
 const RANDOM_ERROR = 'Random error from the server.';
 
+const DEFAULT_DELAY = 2000;
+
 /**
  * Creates random delay or error.
  *
@@ -17,10 +19,19 @@ const RANDOM_ERROR = 'Random error from the server.';
  */
 const triggerRandomDelayOrError = async (req, res, next) => {
 	let error;
-	const randomNumber = generateRandomNumber(1, 3);
+	const { randomDelay, randomError } = req.query;
+	if (randomDelay || randomError) {
+		const randomNumber = generateRandomNumber(1, 3);
 
-	if (randomNumber === Flag.Error) error = new Error(RANDOM_ERROR);
-	else if (randomNumber === Flag.Delay) await sleep(2000);
+		if (randomError && randomNumber === Flag.Error) {
+			error = new Error(RANDOM_ERROR);
+		} else if (randomDelay && randomNumber === Flag.Delay) {
+			const delay =
+				parseInt(/** @type {string} */ (randomDelay), 10) ||
+				DEFAULT_DELAY;
+			await sleep(delay);
+		}
+	}
 
 	next(error);
 };
